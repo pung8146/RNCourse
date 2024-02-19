@@ -4,7 +4,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <View>
-        <Text>Hello World!</Text>
+        <Text style={styles.dummyText}>Hello World!</Text>
       </View>
       <Text
         style={{ margin: 14, borderWidth: 2, borderColor: "red", padding: 16 }}
@@ -22,5 +22,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+  },
+  dummyText: {
+    margin: 14,
+    borderWidth: 2,
+    borderColor: "red",
+    padding: 16,
   },
 });
