@@ -36,4 +36,6 @@ Android Studio 설치 절차
 • Android Studio의 설치 과정에서 Android SDK와 함께 adb (Android Debug Bridge) 도구도 설치됩니다. 터미널에서 adb version을 실행하여 adb가 올바르게 설치되었는지 확인할 수 있습니다.
 ===
 
-##
+## react-native의 핵심코드
+
+> "Core" Components, 핵심 컴포넌트는 React코드 즉 JSX 코드에서 합쳐서 직접 컴포넌트를 만들고 사용자 인터페이스를 구축합니다.
