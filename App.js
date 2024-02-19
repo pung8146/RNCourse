@@ -1,32 +1,37 @@
-import { StyleSheet, Text, View, Button } from "react-native";
+import { useState } from "react";
+import { StyleSheet, Text, View, Button, TextInput } from "react-native";
 
 export default function App() {
+  const [enteredText, setEnteredText] = useState("");
+  const [currentGoals, setCurrentGoals] = useState([]);
+
+  function goalInputHandler(enteredText) {
+    setEnteredText(enteredText);
+  }
+
+  function addGoalHandler() {
+    setCurrentGoals((currentGoals) => [...currentGoals, enteredText]);
+  }
   return (
-    <View style={styles.container}>
-      <View>
-        <Text style={styles.dummyText}>Hello World!</Text>
+    <View style={styles.appContainer}>
+      <View style={styles.InputContainer}>
+        <TextInput placeholder="Input Text" onChangeText={goalInputHandler} />
+        <Button title="Add"></Button>
       </View>
-      <Text
-        style={{ margin: 14, borderWidth: 2, borderColor: "red", padding: 16 }}
-      >
-        Hello 2
-      </Text>
-      <Button title="Press me" onPress={() => alert("Button pressed")} />
+      <View>
+        {currentGoals.map((goal) => (
+          <Text>{goal}</Text>
+        ))}
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+  appContainer: {
+    padding: 50,
   },
-  dummyText: {
-    margin: 14,
-    borderWidth: 2,
-    borderColor: "red",
-    padding: 16,
+  InputContainer: {
+    flexDirection: "row",
   },
 });

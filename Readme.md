@@ -39,3 +39,7 @@ Android Studio 설치 절차
 ## react-native의 핵심코드
 
 > "Core" Components, 핵심 컴포넌트는 React코드 즉 JSX 코드에서 합쳐서 직접 컴포넌트를 만들고 사용자 인터페이스를 구축합니다.
+
+## react-native flex-box
+
+> 기본적으로 react-native는 flex-box를 사용하여 레이아웃을 구성합니다.
