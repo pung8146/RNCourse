@@ -6,7 +6,11 @@ export default function App() {
       <View>
         <Text>Hello World!</Text>
       </View>
-      <Text>Hello 2</Text>
+      <Text
+        style={{ margin: 14, borderWidth: 2, borderColor: "red", padding: 16 }}
+      >
+        Hello 2
+      </Text>
       <Button title="Press me" onPress={() => alert("Button pressed")} />
     </View>
   );
