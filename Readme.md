@@ -212,3 +212,31 @@ function GoalItem(props) {
 js의 내장함수 bind 메서드를 호출하며
 bind함수는 기본 적으로 나중에 실행할 함수를 미리 조정할 수 있게 해줍니다.
 bind에 제공하는 첫 인수의 값은 곳 실행될 함수의 this 키워드로 설정됩니다.
+
+////////////////////////////
+
+## 안드로이드 물결효과 android_ripple
+
+> android_ripple은 안드로이드에서만 사용가능한 효과입니다. pressable 컴포넌트에 사용가능합니다.
+
+```jsx
+<Pressable
+  onPress={props.onDeleteItem.bind(this, props.id)}
+  android_ripple={{ color: "red" }}
+  >
+```
+
+## IOS 물결효과
+
+#### 예시코드
+
+```jsx
+<Pressable
+  onPress={props.onDeleteItem.bind(this, props.id)}
+  style={({ pressed }) => [
+    {
+      backgroundColor: pressed ? "red" : "blue",
+    },
+    styles.goalItem,
+  ]}
+```
