@@ -145,3 +145,42 @@ function addGoalHandler() {
 ```
 
 ////////////////////////////
+
+## 컴포넌트 분리 방법
+
+## Pressable
+
+> 예전에는 Touchable... 등 다양한 컴포넌트가 있었지만 Pressable을 사용하는것을 권장합니다.
+
+#### 예시코드
+
+```jsx
+// 부모컴포넌트
+function deleteGoalHandler() {
+  console.log("delete");
+}
+
+<FlatList
+  data={currentGoals}
+  renderItem={(itemData) => {
+    return (
+      <GoalItem text={itemData.item.text} onDeleteItem={deleteGoalHandler} />
+    );
+  }}
+  keyExtractor={(item, index) => {
+    return item.id;
+  }}
+  alwaysBounceVertical={false}
+/>;
+
+// 자식컴포넌트
+function GoalItem(props) {
+  return (
+    <Pressable onPress={props.onDeleteItem}>
+      <View style={styles.goalItem}>
+        <Text style={styles.goalText}>{props.text}</Text>
+      </View>
+    </Pressable>
+  );
+}
+```
