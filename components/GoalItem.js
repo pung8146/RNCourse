@@ -1,10 +1,10 @@
 import React from "react"; // React를 임포트합니다.
 import { View, Text, StyleSheet } from "react-native";
 
-function GoalItem() {
+function GoalItem(props) {
   return (
     <View style={styles.goalItem}>
-      <Text style={styles.goalText}>{itemData.item}</Text>
+      <Text style={styles.goalText}>{props.text}</Text>
     </View>
   );
 }

@@ -2,29 +2,27 @@ import { useState } from "react";
 import { StyleSheet, View, Button, TextInput, FlatList } from "react-native";
 
 import GoalItem from "./components/GoalItem";
-
+import GoalInput from "./components/GoalInput";
 export default function App() {
-  const [enteredText, setEnteredText] = useState("");
   const [currentGoals, setCurrentGoals] = useState([]);
 
-  function goalInputHandler(enteredText) {
-    setEnteredText(enteredText);
-  }
-
-  function addGoalHandler() {
-    setCurrentGoals((currentGoals) => [...currentGoals, enteredText]);
+  function addGoalHandler(enteredGoalText) {
+    setCurrentGoals((currentGoals) => [
+      ...currentGoals,
+      { text: enteredGoalText, id: Math.random().toString() },
+    ]);
   }
   return (
     <View style={styles.appContainer}>
-      <View style={styles.InputContainer}>
-        <TextInput placeholder="Input Text" onChangeText={goalInputHandler} />
-        <Button title="Add" onPress={addGoalHandler} />
-      </View>
       <View>
+        <GoalInput onAddGoal={addGoalHandler} />
         <FlatList
           data={currentGoals}
           renderItem={(itemData) => {
-            return <GoalItem />;
+            return <GoalItem text={itemData.item.text} />;
+          }}
+          keyExtractor={(item, index) => {
+            return item.id;
           }}
           alwaysBounceVertical={false}
         />
@@ -35,9 +33,11 @@ export default function App() {
 
 const styles = StyleSheet.create({
   appContainer: {
-    padding: 50,
+    flex: 1,
+    paddingTop: 50,
+    paddingHorizontal: 16,
   },
-  InputContainer: {
-    flexDirection: "row",
+  goalsContainer: {
+    flex: 5,
   },
 });
