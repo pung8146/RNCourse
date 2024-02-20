@@ -1,13 +1,7 @@
 import { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  TextInput,
-  ScrollView,
-  FlatList,
-} from "react-native";
+import { StyleSheet, View, Button, TextInput, FlatList } from "react-native";
+
+import GoalItem from "./components/GoalItem";
 
 export default function App() {
   const [enteredText, setEnteredText] = useState("");
@@ -30,11 +24,7 @@ export default function App() {
         <FlatList
           data={currentGoals}
           renderItem={(itemData) => {
-            return (
-              <View style={styles.goalItem}>
-                <Text>{itemData.item}</Text>
-              </View>
-            );
+            return <GoalItem />;
           }}
           alwaysBounceVertical={false}
         />

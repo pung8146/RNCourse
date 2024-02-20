@@ -143,3 +143,5 @@ function addGoalHandler() {
   keyExtractor={(item, index) => {return item.id}}
   alwaysBounceVertical={false}
 ```
+
+////////////////////////////
