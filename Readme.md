@@ -66,23 +66,12 @@ Android Studio 설치 절차
 
 > 보이기 전까지 렌더링 하지 않습니다.
 
-### 중요한 프로퍼티 2개
-
-1. data : 렌더링할 데이터
-   목록에서 출력한 데이터를 지정하는 역할을 합니다.
-2. renderItem : 각 아이템을 렌더링하는 함수
-   목록에서 각 아이템을 렌더링하는 함수를 지정하는 역할을 합니다.
-   함수는 자동으로 개별 항목을 매개변수로 받습니다.
-3. keyExtractor : 각 아이템을 구분하는 키를 지정하는 함수
-   목록에서 각 아이템을 구분하는 키를 지정하는 함수를 지정하는 역할을 합니다.
-
 #### 예시코드
 
 ```jsx
 <FlatList
   data={currentGoals}
   renderItem={(itemData) => {
-    itemData.index;
     return (
       <View style={styles.goalItem}>
         <Text>{itemData.item}</Text>
@@ -92,3 +81,44 @@ Android Studio 설치 절차
   alwaysBounceVertical={false}
 />
 ```
+
+### 중요한 프로퍼티
+
+1. data : 렌더링할 데이터
+   목록에서 출력한 데이터를 지정하는 역할을 합니다.
+2. renderItem : 각 아이템을 렌더링하는 함수
+   목록에서 각 아이템을 렌더링하는 함수를 지정하는 역할을 합니다.
+   함수는 자동으로 개별 항목을 매개변수로 받습니다.
+
+#### key를 추가하는 주요 방법 2가지
+
+1. 첫 번째 접근 방식은 데이터의 값을 여기 있는 문자열 같은 원시 값에서
+   key 프로퍼티를 포함하는 객체로 변환하는 것입니다.
+   > 예시코드
+
+```jsx
+// 기존코드
+function addGoalHandler() {
+  setCurrentGoals((currentGoals) => [...currentGoals, enteredText]);
+}
+// 변경후 코드
+function addGoalHandler() {
+  setCurrentGoals((currentGoals) => [
+    ...currentGoals,
+    { key: Math.random().toString(), text: enteredText },
+  ]);
+}
+// 변경후 jsx코드
+<FlatList
+  data={currentGoals}
+  renderItem={(itemData) => {
+    return (
+      <View style={styles.goalItem}>
+        <Text>{itemData.item.text}</Text>
+      </View>
+    );
+  }}
+  alwaysBounceVertical={false}
+```
+
+> **FlatList 가 자동으로 key 프로퍼티를 찾아서 사용합니다.** 데이터 배열에 있는 원시 값으로도 작동하지만, 데이터 배열의 데이터가 객체일때 더 효율적으로 작동합니다.
