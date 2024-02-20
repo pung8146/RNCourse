@@ -51,13 +51,44 @@ Android Studio 설치 절차
 #### 예시코드
 
 ```jsx
-<ScrollView>
+<ScrollView alwaysBounceVertical={false}>
   {currentGoals.map((goal) => (
     <Text key={goal}>{goal}</Text>
   ))}
 </ScrollView>
 ```
 
+#### alwaysBounceVertical={false}
+
+1.  통통 튀는 효과를 없애줍니다.
+
 ## FlatList
 
 > 보이기 전까지 렌더링 하지 않습니다.
+
+### 중요한 프로퍼티 2개
+
+1. data : 렌더링할 데이터
+   목록에서 출력한 데이터를 지정하는 역할을 합니다.
+2. renderItem : 각 아이템을 렌더링하는 함수
+   목록에서 각 아이템을 렌더링하는 함수를 지정하는 역할을 합니다.
+   함수는 자동으로 개별 항목을 매개변수로 받습니다.
+3. keyExtractor : 각 아이템을 구분하는 키를 지정하는 함수
+   목록에서 각 아이템을 구분하는 키를 지정하는 함수를 지정하는 역할을 합니다.
+
+#### 예시코드
+
+```jsx
+<FlatList
+  data={currentGoals}
+  renderItem={(itemData) => {
+    itemData.index;
+    return (
+      <View style={styles.goalItem}>
+        <Text>{itemData.item}</Text>
+      </View>
+    );
+  }}
+  alwaysBounceVertical={false}
+/>
+```

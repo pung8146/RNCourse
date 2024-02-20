@@ -26,11 +26,18 @@ export default function App() {
         <Button title="Add" onPress={addGoalHandler} />
       </View>
       <View>
-        <ScrollView>
-          {currentGoals.map((goal) => (
-            <Text key={goal}>{goal}</Text>
-          ))}
-        </ScrollView>
+        <FlatList
+          data={currentGoals}
+          renderItem={(itemData) => {
+            itemData.index;
+            return (
+              <View style={styles.goalItem}>
+                <Text>{itemData.item}</Text>
+              </View>
+            );
+          }}
+          alwaysBounceVertical={false}
+        />
       </View>
     </View>
   );
