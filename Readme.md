@@ -43,3 +43,21 @@ Android Studio 설치 절차
 ## react-native flex-box
 
 > 기본적으로 react-native는 flex-box를 사용하여 레이아웃을 구성합니다.
+
+## ScrollView
+
+> ScrollView는 스크롤이 가능한 컴포넌트입니다. 하지만 ScrollView는 모든 아이템을 렌더링하기 때문에 아이템이 많을 경우에는 FlatList를 사용하는 것이 좋습니다.
+
+#### 예시코드
+
+```jsx
+<ScrollView>
+  {currentGoals.map((goal) => (
+    <Text key={goal}>{goal}</Text>
+  ))}
+</ScrollView>
+```
+
+## FlatList
+
+> 보이기 전까지 렌더링 하지 않습니다.
