@@ -16,11 +16,11 @@ export default function App() {
     <View style={styles.appContainer}>
       <View style={styles.InputContainer}>
         <TextInput placeholder="Input Text" onChangeText={goalInputHandler} />
-        <Button title="Add"></Button>
+        <Button title="Add" onPress={addGoalHandler} />
       </View>
       <View>
         {currentGoals.map((goal) => (
-          <Text>{goal}</Text>
+          <Text key={goal}>{goal}</Text>
         ))}
       </View>
     </View>
