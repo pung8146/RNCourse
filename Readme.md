@@ -121,4 +121,25 @@ function addGoalHandler() {
   alwaysBounceVertical={false}
 ```
 
-> **FlatList 가 자동으로 key 프로퍼티를 찾아서 사용합니다.** 데이터 배열에 있는 원시 값으로도 작동하지만, 데이터 배열의 데이터가 객체일때 더 효율적으로 작동합니다.
+> **FlatList 가 자동으로 key 프로퍼티를 찾아서 사용합니다.** 데이터 배열에 있는 원시 값으로도 작동하지만, 데이터 배열의 데이터가 객체일때 더 효율적으로 작동합니다. , ** key ** 만 찾아서 동작합니다.
+
+2. keyExtractor 프로퍼티를 사용하는 방법
+
+   > keyExtractor 프로퍼티는 함수를 값으로 취하고, 이 함수는 각 항목에 대한 고유한 키를 반환합니다. 이 함수는 두 개의 인수를 받습니다. 첫 번째 인수는 항목 자체이고, 두 번째 인수는 항목의 인덱스입니다. 렌더링 되는 목록 항목마다 이 함수를 호출 합니다.
+
+> renderItem 함수도 랜더링되는 모든 목록 항목에 대해 호출되지만, keyExtractor 함수는 목록 항목의 키를 추출하는 데만 사용됩니다.
+> 예시코드
+
+```jsx
+<FlatList
+  data={currentGoals}
+  renderItem={(itemData) => {
+    return (
+      <View style={styles.goalItem}>
+        <Text>{itemData.item}</Text>
+      </View>
+    );
+  }}
+  keyExtractor={(item, index) => {return item.id}}
+  alwaysBounceVertical={false}
+```
