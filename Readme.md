@@ -184,3 +184,31 @@ function GoalItem(props) {
   );
 }
 ```
+
+## pressable 을 이용한 삭제기능
+
+> filter를 이용하여 삭제기능을 구현합니다.
+
+```jsx
+// 부모 컴포넌트
+function deleteGoalHandler(id) {
+  setCourseGoals((currentGoals) => {
+    return currentGoals.filter((goal) => goal.id !== id);
+  });
+}
+
+// 자식 컴포넌트
+function GoalItem(props) {
+  return (
+    <Pressable onPress={props.onDeleteItem.bind(this, props.id)}>
+      <View style={styles.goalItem}>
+        <Text style={styles.goalText}>{props.text}</Text>
+      </View>
+    </Pressable>
+  );
+}
+```
+
+js의 내장함수 bind 메서드를 호출하며
+bind함수는 기본 적으로 나중에 실행할 함수를 미리 조정할 수 있게 해줍니다.
+bind에 제공하는 첫 인수의 값은 곳 실행될 함수의 this 키워드로 설정됩니다.
