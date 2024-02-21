@@ -240,3 +240,19 @@ bind에 제공하는 첫 인수의 값은 곳 실행될 함수의 this 키워드
     styles.goalItem,
   ]}
 ```
+
+////////////////
+
+# 디버깅 하는법
+
+## console.log
+
+## React Native Debugger 도구
+
+> npm install -g react-devtools
+
+> 시뮬레이터 에서 개발자 메뉴 > Debug Remote JS 를 클릭합니다.
+
+> 컴포넌트 트리를 확인할 수 있습니다.
+
+> 컴포넌트 클릭하면 , 어떤 프로퍼티가 포함되고 그 안에 어떤 값이 있는지, 어떤 상태가 있는지 확인할 수 있습니다.
